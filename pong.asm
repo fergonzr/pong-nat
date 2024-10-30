@@ -1,13 +1,13 @@
 		ldi r0, 0
 		stm r0, 1
 		stm r0, 2
+		ldi r4, 7
 init	ldi r5, 0
 		stm r5, 3
 		csr pt_scr
 		ldi r1, 20
 		ldi r2, 10
 		ldi r3, 16
-		ldi r4, 7
 		ldi r5, 19
 		stm r0, 192
 		stm r4, 128
@@ -24,6 +24,7 @@ rgt_dwn	cmp r1, r6
 		adi r2, 1
 		stm r1, 64
 		stm r2, 96
+		csr ch_clr
 		stm r0, 160
 		csr rd_joy
 		cmp r2, r7
@@ -43,6 +44,7 @@ lft_dwn	cmp r2, r7
 		adi r2, 1
 		stm r1, 64
 		stm r2, 96
+		csr ch_clr
 		stm r0, 160
 		csr rd_joy
 		cmp r2, r7
@@ -62,6 +64,7 @@ lft_up	cmp r1, r0
 		adi r2, 255
 		stm r1, 64
 		stm r2, 96
+		csr ch_clr
 		stm r0, 160
 		csr rd_joy
 		cmp r2, r7
@@ -81,6 +84,7 @@ rgt_up	cmp r2, r0
 		adi r2, 255
 		stm r1, 64
 		stm r2, 96
+		csr ch_clr
 		stm r0, 160
 		csr rd_joy
 		cmp r2, r7
@@ -97,7 +101,8 @@ rstb_y	ldi r2, 10
 		ret
 rstb_x	ldi r1, 21
 		ret
-rd_joy	ldi r4, 3
+rd_joy	stm r4, 4
+		ldi r4, 3
 		stm r4, 128
 		ldi r5, 1
 		ldm r3, 32
@@ -131,7 +136,7 @@ pt_pad	stm r7, 96
 		adi r3, 1
 		stm r3, 64
 		stm r0, 160
-		ldi r4, 7
+		ldm r4, 4
 		stm r4, 128
 		ret
 chk_bll	ldm r3, 0
@@ -151,6 +156,14 @@ fail	ldm r5, 2
 		stm r5, 2
 		ldi r5, 1
 		stm r5, 3
+		ret
+ch_clr	ldi r5, 7
+		cmp r4, r5
+		jnz inc_clr
+		ldi r4, 0
+inc_clr	adi r4, 1
+		stm r4, 128
+		ldi r5, 0
 		ret
 pt_scr	ldi r5, 85
 		stm r5, 32
