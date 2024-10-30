@@ -115,21 +115,21 @@ pad_up	ldm r3, 0
 pad_dwn	ldm r3, 0
 		adi r3, 1
 		stm r3, 0
-pt_pad	stm r0, 64
+pt_pad	stm r7, 96
 		ldm r3, 0
-		stm r3, 96
+		stm r3, 64
 		stm r0, 160
 		adi r3, 1
-		stm r3, 96
+		stm r3, 64
 		stm r0, 160
 		adi r3, 1
-		stm r3, 96
+		stm r3, 64
 		stm r0, 160
 		adi r3, 1
-		stm r3, 96
+		stm r3, 64
 		stm r0, 160
 		adi r3, 1
-		stm r3, 96
+		stm r3, 64
 		stm r0, 160
 		ldi r4, 7
 		stm r4, 128
