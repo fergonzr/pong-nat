@@ -26,7 +26,7 @@ rgt_dwn	cmp r1, r6
 		stm r2, 96
 		stm r0, 160
 		csr rd_joy
-		cmp r1, r0
+		cmp r2, r7
 		csz chk_bll
 		ldm r5, 3
 		cmp r5, r0
@@ -45,7 +45,7 @@ lft_dwn	cmp r2, r7
 		stm r2, 96
 		stm r0, 160
 		csr rd_joy
-		cmp r1, r0
+		cmp r2, r7
 		csz chk_bll
 		ldm r5, 3
 		cmp r5, r0
@@ -64,7 +64,7 @@ lft_up	cmp r1, r0
 		stm r2, 96
 		stm r0, 160
 		csr rd_joy
-		cmp r1, r0
+		cmp r2, r7
 		csz chk_bll
 		ldm r5, 3
 		cmp r5, r0
@@ -83,7 +83,7 @@ rgt_up	cmp r2, r0
 		stm r2, 96
 		stm r0, 160
 		csr rd_joy
-		cmp r1, r0
+		cmp r2, r7
 		csz chk_bll
 		ldm r5, 3
 		cmp r5, r0
@@ -135,11 +135,11 @@ pt_pad	stm r7, 96
 		stm r4, 128
 		ret
 chk_bll	ldm r3, 0
-		cmp r2, r3
+		cmp r1, r3
 		jnc gt_pad
 		jmp fail
 gt_pad	adi r3, 4
-		cmp r3, r2
+		cmp r3, r1
 		jpc fail
 		ldm r5, 1
 		adi r5, 1
